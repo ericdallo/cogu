@@ -6,7 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         cogu: {
-          cream: "#ffeeda",
+          cream: "#f9f5e9",
           yellow: "#f9f539",
           sage: "#bec1ac",
           "blue-gray": "#9ab5c7",

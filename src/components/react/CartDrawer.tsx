@@ -16,7 +16,7 @@ function CartDrawerInner() {
       />
 
       {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-[#ffeeda] z-50 shadow-2xl flex flex-col">
+      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-[#f9f5e9] z-50 shadow-2xl flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-[#bec1ac]/30">
           <h2 className="font-display text-[#2c5f34] text-xl">
