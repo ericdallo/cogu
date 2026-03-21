@@ -12,7 +12,8 @@ import { url } from "@/utils/paths";
     width={1600}
     height={2133}
     quality={90}
-    class="absolute inset-0 w-full h-full object-cover object-[center_85%]"
+    class="absolute inset-0 w-full h-[120%] object-cover object-[center_85%] will-change-transform"
+    id="hero-img"
   />
 
   <!-- Dark overlay for text readability -->
@@ -60,3 +61,25 @@ import { url } from "@/utils/paths";
     </div>
   </div>
 </section>
+
+<script>
+  const img = document.getElementById("hero-img") as HTMLImageElement;
+  const section = img?.closest("section");
+
+  if (img && section && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const rect = section.getBoundingClientRect();
+          if (rect.bottom > 0) {
+            const offset = window.scrollY * 0.3;
+            img.style.transform = `translateY(${offset}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+</script>
