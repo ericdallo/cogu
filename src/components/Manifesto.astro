@@ -1,4 +1,6 @@
 ---
+import { url } from "@/utils/paths";
+
 interface Props {
   compact?: boolean;
 }
@@ -55,7 +57,7 @@ const { compact = false } = Astro.props;
 
       {
         compact && (
-          <a href="/sobre" class="btn-secondary no-underline inline-block">
+          <a href={url("/sobre")} class="btn-secondary no-underline inline-block">
             Conhecer mais
           </a>
         )

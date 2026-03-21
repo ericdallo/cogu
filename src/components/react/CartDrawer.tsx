@@ -54,7 +54,7 @@ function CartDrawerInner() {
                 Que tal explorar nossos produtos?
               </p>
               <a
-                href="/produtos"
+                href={`${import.meta.env.BASE_URL}produtos`}
                 onClick={closeCart}
                 className="inline-block bg-[#2c5f34] text-[#ffeeda] px-6 py-3 rounded-full font-medium hover:bg-[#633b21] transition-colors no-underline"
               >

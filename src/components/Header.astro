@@ -1,12 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import logo from "@assets/logo.png";
+import { url } from "@/utils/paths";
 ---
 
 <header class="sticky top-0 z-40 bg-cogu-cream/95 backdrop-blur-sm border-b border-cogu-sage/30">
   <div class="container-cogu flex items-center justify-between h-16 md:h-20">
     <!-- Logo -->
-    <a href="/" class="no-underline hover:no-underline flex items-center gap-2">
+    <a href={url("/")} class="no-underline hover:no-underline flex items-center gap-2">
       <Image
         src={logo}
         alt="Cogu"
@@ -20,13 +21,13 @@ import logo from "@assets/logo.png";
     <!-- Navigation -->
     <nav class="hidden md:flex items-center gap-8">
       <a
-        href="/produtos"
+        href={url("/produtos")}
         class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
       >
         Produtos
       </a>
       <a
-        href="/sobre"
+        href={url("/sobre")}
         class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
       >
         Sobre
@@ -96,13 +97,13 @@ import logo from "@assets/logo.png";
   >
     <div class="container-cogu py-4 flex flex-col gap-4">
       <a
-        href="/produtos"
+        href={url("/produtos")}
         class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
       >
         Produtos
       </a>
       <a
-        href="/sobre"
+        href={url("/sobre")}
         class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
       >
         Sobre

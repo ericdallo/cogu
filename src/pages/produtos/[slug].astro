@@ -3,6 +3,7 @@ import Base from "@layouts/Base.astro";
 import ProductGallery from "@components/ProductGallery.astro";
 import ProductCard from "@components/ProductCard.astro";
 import { products, getProduct, formatPrice } from "@data/products";
+import { url } from "@/utils/paths";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -15,7 +16,7 @@ const { slug } = Astro.params;
 const product = getProduct(slug as string);
 
 if (!product) {
-  return Astro.redirect("/produtos");
+  return Astro.redirect(url("/produtos"));
 }
 
 const otherProducts = products.filter((p) => p.slug !== product.slug);

@@ -3,28 +3,28 @@
 /* MAK font family — titles */
 @font-face {
   font-family: "MAK";
-  src: url("/fonts/Mak-RegularLow.otf") format("opentype");
+  src: url("../assets/fonts/Mak-RegularLow.otf") format("opentype");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: "MAK";
-  src: url("/fonts/Mak-SemiBoldHigh.otf") format("opentype");
+  src: url("../assets/fonts/Mak-SemiBoldHigh.otf") format("opentype");
   font-weight: 600;
   font-display: swap;
 }
 
 @font-face {
   font-family: "MAK";
-  src: url("/fonts/Mak-ExtraBold.otf") format("opentype");
+  src: url("../assets/fonts/Mak-ExtraBold.otf") format("opentype");
   font-weight: 800;
   font-display: swap;
 }
 
 @font-face {
   font-family: "MAK";
-  src: url("/fonts/Mak-BlackHigh.otf") format("opentype");
+  src: url("../assets/fonts/Mak-BlackHigh.otf") format("opentype");
   font-weight: 900;
   font-display: swap;
 }

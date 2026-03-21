@@ -1,4 +1,5 @@
 ---
+import { url } from "@/utils/paths";
 const currentYear = new Date().getFullYear();
 ---
 
@@ -21,13 +22,13 @@ const currentYear = new Date().getFullYear();
         </h4>
         <nav class="flex flex-col gap-2">
           <a
-            href="/produtos"
+            href={url("/produtos")}
             class="text-cogu-sage no-underline hover:text-cogu-cream transition-colors text-sm"
           >
             Produtos
           </a>
           <a
-            href="/sobre"
+            href={url("/sobre")}
             class="text-cogu-sage no-underline hover:text-cogu-cream transition-colors text-sm"
           >
             Sobre a Cogu

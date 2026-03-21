@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import heroImage from "@assets/products/mini-fichario/product-1.png";
+import { url } from "@/utils/paths";
 ---
 
 <section class="relative overflow-hidden">
@@ -30,7 +31,7 @@ import heroImage from "@assets/products/mini-fichario/product-1.png";
         rotina mais leve, mais bonita, mais sua.
       </p>
       <div class="flex gap-4 justify-center md:justify-start">
-        <a href="/produtos" class="btn-primary no-underline">
+        <a href={url("/produtos")} class="btn-primary no-underline">
           Ver produtos
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +48,7 @@ import heroImage from "@assets/products/mini-fichario/product-1.png";
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </a>
-        <a href="/sobre" class="btn-secondary no-underline">
+        <a href={url("/sobre")} class="btn-secondary no-underline">
           Nossa história
         </a>
       </div>

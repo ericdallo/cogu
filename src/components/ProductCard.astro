@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { Product } from "@data/products";
 import { formatPrice } from "@data/products";
+import { url } from "@/utils/paths";
 
 interface Props {
   product: Product;
@@ -17,7 +18,7 @@ const imageModule = images[imagePath];
 ---
 
 <a
-  href={`/produtos/${product.slug}`}
+  href={url(`/produtos/${product.slug}`)}
   class="group block no-underline hover:no-underline"
 >
   <article class="space-y-4">
@@ -34,13 +35,7 @@ const imageModule = images[imagePath];
           />
         )
       }
-      {
-        product.featured && (
-          <span class="absolute top-3 left-3 bg-cogu-yellow text-cogu-brown text-xs font-medium px-3 py-1 rounded-full">
-            Destaque ✦
-          </span>
-        )
-      }
+
     </div>
 
     <!-- Info -->
