@@ -56,7 +56,7 @@ function CartDrawerInner() {
               <a
                 href={`${import.meta.env.BASE_URL}produtos`}
                 onClick={closeCart}
-                className="inline-block bg-[#2c5f34] text-[#ffeeda] px-6 py-3 rounded-full font-medium hover:bg-[#633b21] transition-colors no-underline"
+                className="inline-block bg-[#2c5f34] text-[#f9f5e9] px-6 py-3 rounded-xl font-medium hover:bg-[#633b21] transition-colors no-underline"
               >
                 Ver produtos
               </a>
@@ -152,7 +152,7 @@ function CartDrawerInner() {
             {/* Em breve checkout */}
             <button
               disabled
-              className="w-full bg-[#bec1ac]/50 text-[#633b21]/60 px-6 py-4 rounded-full font-medium cursor-not-allowed"
+              className="w-full bg-[#bec1ac]/50 text-[#633b21]/60 px-6 py-4 rounded-xl font-medium cursor-not-allowed"
             >
               🍄 Em breve
             </button>
@@ -160,7 +160,7 @@ function CartDrawerInner() {
               Estamos preparando tudo com carinho.<br />
               Siga nosso{" "}
               <a
-                href="https://instagram.com/cogu"
+                href="https://instagram.com/cogupaper"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#2c5f34] underline"

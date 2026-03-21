@@ -82,12 +82,12 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-cogu-green text-cogu-cream px-6 py-3 rounded-full font-sans font-medium
+    @apply bg-cogu-green text-cogu-cream px-6 py-3 rounded-xl font-sans font-medium
            hover:bg-cogu-brown transition-colors duration-300 inline-flex items-center gap-2;
   }
 
   .btn-secondary {
-    @apply border-2 border-cogu-green text-cogu-green px-6 py-3 rounded-full font-sans font-medium
+    @apply border-2 border-cogu-green text-cogu-green px-6 py-3 rounded-xl font-sans font-medium
            hover:bg-cogu-green hover:text-cogu-cream transition-colors duration-300;
   }
 
