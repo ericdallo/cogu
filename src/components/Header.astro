@@ -1,0 +1,121 @@
+---
+import { Image } from "astro:assets";
+import logo from "@assets/logo.png";
+---
+
+<header class="sticky top-0 z-40 bg-cogu-cream/95 backdrop-blur-sm border-b border-cogu-sage/30">
+  <div class="container-cogu flex items-center justify-between h-16 md:h-20">
+    <!-- Logo -->
+    <a href="/" class="no-underline hover:no-underline flex items-center gap-2">
+      <Image
+        src={logo}
+        alt="Cogu"
+        width={40}
+        height={40}
+        class="rounded-full"
+      />
+      <span class="font-display text-cogu-green text-xl md:text-2xl">cogu</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a
+        href="/produtos"
+        class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
+      >
+        Produtos
+      </a>
+      <a
+        href="/sobre"
+        class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
+      >
+        Sobre
+      </a>
+    </nav>
+
+    <!-- Cart + Mobile menu -->
+    <div class="flex items-center gap-4">
+      <!-- Cart button -->
+      <button
+        id="cart-toggle"
+        class="relative p-2 text-cogu-brown hover:text-cogu-green transition-colors"
+        aria-label="Abrir carrinho"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 01-8 0"></path>
+        </svg>
+        <span
+          id="cart-count"
+          class="absolute -top-1 -right-1 bg-cogu-red text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium hidden"
+        >
+          0
+        </span>
+      </button>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden p-2 text-cogu-brown hover:text-cogu-green transition-colors"
+        aria-label="Menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile navigation -->
+  <nav
+    id="mobile-menu"
+    class="md:hidden hidden border-t border-cogu-sage/30 bg-cogu-cream"
+  >
+    <div class="container-cogu py-4 flex flex-col gap-4">
+      <a
+        href="/produtos"
+        class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
+      >
+        Produtos
+      </a>
+      <a
+        href="/sobre"
+        class="text-cogu-brown no-underline hover:text-cogu-green transition-colors text-sm uppercase tracking-wider font-medium"
+      >
+        Sobre
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileToggle?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+</script>

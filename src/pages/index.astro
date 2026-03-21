@@ -1,0 +1,63 @@
+---
+import Base from "@layouts/Base.astro";
+import Hero from "@components/Hero.astro";
+import Manifesto from "@components/Manifesto.astro";
+import ProductCard from "@components/ProductCard.astro";
+import { products } from "@data/products";
+---
+
+<Base>
+  <Hero />
+
+  <!-- Products section -->
+  <section class="container-cogu py-16 md:py-24">
+    <div class="text-center space-y-4 mb-12">
+      <p class="text-cogu-brown/70 text-sm uppercase tracking-widest font-medium">
+        Feito à mão com carinho
+      </p>
+      <h2>Nossos produtos</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+
+  <!-- Manifesto teaser -->
+  <Manifesto compact />
+
+  <!-- Instagram CTA -->
+  <section class="container-cogu py-16 md:py-24 text-center space-y-6">
+    <p class="text-cogu-brown/70 text-sm uppercase tracking-widest font-medium">
+      Acompanhe nosso caminho
+    </p>
+    <h2>Tem mais no Instagram</h2>
+    <p class="text-cogu-brown/70 text-lg max-w-md mx-auto">
+      Bastidores, novidades e muitas coisinhas aconchegantes. Vem caminhar com
+      a gente 🍄
+    </p>
+    <a
+      href="https://instagram.com/cogu"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-primary no-underline inline-flex"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+      Seguir @cogu
+    </a>
+  </section>
+</Base>

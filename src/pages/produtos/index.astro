@@ -1,0 +1,28 @@
+---
+import Base from "@layouts/Base.astro";
+import ProductCard from "@components/ProductCard.astro";
+import { products } from "@data/products";
+---
+
+<Base
+  title="Produtos — Cogu"
+  description="Conheça nossos produtos artesanais: fichários, adesivos e papelaria feitos à mão com carinho."
+>
+  <!-- Page header -->
+  <section class="container-cogu pt-12 md:pt-20 pb-8 text-center space-y-4">
+    <p class="text-cogu-brown/70 text-sm uppercase tracking-widest font-medium">
+      Feito à mão com carinho
+    </p>
+    <h1>Produtos</h1>
+    <p class="text-cogu-brown/70 text-lg max-w-md mx-auto">
+      Cada peça é única, feita com materiais escolhidos a dedo e muito carinho.
+    </p>
+  </section>
+
+  <!-- Product grid -->
+  <section class="container-cogu py-8 pb-16 md:pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+</Base>

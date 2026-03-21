@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  productImages: string[];
+  productName: string;
+}
+
+const { productImages, productName } = Astro.props;
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/products/**/*.png"
+);
+
+const resolvedImages = productImages
+  .map((img) => {
+    const path = `/src/assets/products/${img}`;
+    return allImages[path] ? { path, loader: allImages[path] } : null;
+  })
+  .filter(Boolean) as { path: string; loader: () => Promise<{ default: ImageMetadata }> }[];
+---
+
+<div class="space-y-4">
+  <!-- Main image -->
+  {
+    resolvedImages.length > 0 && (
+      <div class="overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-square">
+        <Image
+          src={resolvedImages[0].loader()}
+          alt={productName}
+          width={800}
+          height={800}
+          id="gallery-main"
+          class="object-cover w-full h-full"
+        />
+      </div>
+    )
+  }
+
+  <!-- Thumbnails -->
+  {
+    resolvedImages.length > 1 && (
+      <div class="grid grid-cols-4 gap-3">
+        {resolvedImages.map((img, i) => (
+          <button
+            class:list={[
+              "overflow-hidden rounded-xl bg-cogu-sage/20 aspect-square border-2 transition-colors gallery-thumb",
+              i === 0 ? "border-cogu-green" : "border-transparent hover:border-cogu-sage",
+            ]}
+            data-index={i}
+          >
+            <Image
+              src={img.loader()}
+              alt={`${productName} - foto ${i + 1}`}
+              width={200}
+              height={200}
+              class="object-cover w-full h-full"
+            />
+          </button>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<script>
+  const thumbs = document.querySelectorAll(".gallery-thumb");
+  const mainImg = document.getElementById("gallery-main") as HTMLImageElement;
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      const img = thumb.querySelector("img");
+      if (img && mainImg) {
+        mainImg.src = img.src;
+        mainImg.alt = img.alt;
+
+        thumbs.forEach((t) => {
+          t.classList.remove("border-cogu-green");
+          t.classList.add("border-transparent");
+        });
+        thumb.classList.remove("border-transparent");
+        thumb.classList.add("border-cogu-green");
+      }
+    });
+  });
+</script>

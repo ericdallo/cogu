@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import type { Product } from "@data/products";
+import { formatPrice } from "@data/products";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/products/**/*.png"
+);
+const imagePath = `/src/assets/products/${product.images[0]}`;
+const imageModule = images[imagePath];
+---
+
+<a
+  href={`/produtos/${product.slug}`}
+  class="group block no-underline hover:no-underline"
+>
+  <article class="space-y-4">
+    <!-- Image -->
+    <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-square">
+      {
+        imageModule && (
+          <Image
+            src={imageModule()}
+            alt={product.name}
+            width={600}
+            height={600}
+            class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+          />
+        )
+      }
+      {
+        product.featured && (
+          <span class="absolute top-3 left-3 bg-cogu-yellow text-cogu-brown text-xs font-medium px-3 py-1 rounded-full">
+            Destaque ✦
+          </span>
+        )
+      }
+    </div>
+
+    <!-- Info -->
+    <div class="space-y-1 px-1">
+      <p class="text-cogu-brown/50 text-xs uppercase tracking-wider">
+        {product.category}
+      </p>
+      <h3 class="text-cogu-green text-lg font-display group-hover:text-cogu-brown transition-colors">
+        {product.name}
+      </h3>
+      <p class="text-cogu-brown/70 text-sm line-clamp-2">
+        {product.description}
+      </p>
+      <p class="text-cogu-green font-medium pt-1">
+        {formatPrice(product.price)}
+      </p>
+    </div>
+  </article>
+</a>

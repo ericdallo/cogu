@@ -1,0 +1,104 @@
+---
+import Base from "@layouts/Base.astro";
+import ProductGallery from "@components/ProductGallery.astro";
+import ProductCard from "@components/ProductCard.astro";
+import { products, getProduct, formatPrice } from "@data/products";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+  }));
+};
+
+const { slug } = Astro.params;
+const product = getProduct(slug as string);
+
+if (!product) {
+  return Astro.redirect("/produtos");
+}
+
+const otherProducts = products.filter((p) => p.slug !== product.slug);
+---
+
+<Base
+  title={`${product.name} — Cogu`}
+  description={product.description}
+>
+  <article class="container-cogu pt-8 md:pt-16 pb-16 md:pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+      <!-- Gallery -->
+      <ProductGallery
+        productImages={product.images}
+        productName={product.name}
+      />
+
+      <!-- Product info -->
+      <div class="space-y-6 md:sticky md:top-28 md:self-start">
+        <div class="space-y-2">
+          <p class="text-cogu-brown/50 text-xs uppercase tracking-wider">
+            {product.category}
+          </p>
+          <h1 class="text-3xl md:text-4xl">{product.name}</h1>
+        </div>
+
+        <p class="text-cogu-green text-2xl font-display">
+          {formatPrice(product.price)}
+        </p>
+
+        <div class="text-cogu-brown/80 leading-relaxed whitespace-pre-line">
+          {product.longDescription}
+        </div>
+
+        <!-- Details -->
+        <ul class="space-y-2 border-t border-cogu-sage/30 pt-6">
+          {
+            product.details.map((detail) => (
+              <li class="flex items-center gap-3 text-cogu-brown/80 text-sm">
+                <span class="text-cogu-green">✦</span>
+                {detail}
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- Em breve button -->
+        <div class="space-y-3 border-t border-cogu-sage/30 pt-6">
+          <button
+            disabled
+            class="w-full bg-cogu-sage/50 text-cogu-brown/60 px-6 py-4 rounded-full font-sans font-medium cursor-not-allowed"
+          >
+            🍄 Em breve
+          </button>
+          <p class="text-center text-cogu-brown/50 text-sm">
+            Estamos preparando tudo com carinho.<br />
+            Siga nosso
+            <a
+              href="https://instagram.com/cogu"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-cogu-green"
+            >
+              Instagram
+            </a>
+             para saber quando estiver disponível ♡
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related products -->
+    {
+      otherProducts.length > 0 && (
+        <section class="mt-20 md:mt-28">
+          <h2 class="text-center mb-10">Veja também</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {otherProducts.map((p) => (
+              <ProductCard product={p} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </article>
+</Base>

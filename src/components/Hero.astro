@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "@assets/products/mini-fichario/product-1.png";
+---
+
+<section class="relative overflow-hidden">
+  <!-- Background pattern -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-cogu-sage/20 to-cogu-cream"
+  >
+  </div>
+
+  <div
+    class="container-cogu relative py-16 md:py-28 flex flex-col md:flex-row items-center gap-10 md:gap-16"
+  >
+    <!-- Text -->
+    <div class="flex-1 space-y-6 text-center md:text-left">
+      <p
+        class="text-cogu-brown/70 text-sm uppercase tracking-widest font-medium"
+      >
+        Serviço de entregas aconchegantes
+      </p>
+      <h1 class="text-cogu-green leading-tight">
+        Pequenas coisas<br />
+        também são<br />
+        <span class="text-cogu-red">mágicas</span>.
+      </h1>
+      <p class="text-cogu-brown/80 text-lg md:text-xl max-w-md leading-relaxed">
+        Cadernos, adesivos e papelaria artesanal feitos à mão para tornar cada
+        rotina mais leve, mais bonita, mais sua.
+      </p>
+      <div class="flex gap-4 justify-center md:justify-start">
+        <a href="/produtos" class="btn-primary no-underline">
+          Ver produtos
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="/sobre" class="btn-secondary no-underline">
+          Nossa história
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero image -->
+    <div class="flex-1 flex justify-center">
+      <div class="relative">
+        <div
+          class="absolute -inset-4 bg-cogu-sage/30 rounded-[2rem] rotate-3"
+        >
+        </div>
+        <Image
+          src={heroImage}
+          alt="Mini Fichário Cogu — fichário artesanal feito à mão"
+          width={500}
+          height={500}
+          class="relative rounded-2xl shadow-xl object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>

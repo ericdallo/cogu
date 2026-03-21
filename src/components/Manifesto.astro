@@ -1,0 +1,65 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<section class="bg-cogu-sage/20">
+  <div class="container-cogu py-16 md:py-24">
+    <div class="max-w-2xl mx-auto text-center space-y-8">
+      <p class="text-cogu-brown/70 text-sm uppercase tracking-widest font-medium">
+        Sobre a Cogu
+      </p>
+
+      <h2 class="text-cogu-green">
+        Pequenas coisas<br />também são mágicas.
+      </h2>
+
+      <div class="space-y-6 text-cogu-brown/80 text-lg leading-relaxed">
+        <p>
+          A gente acredita no encanto dos detalhes: na xícara de chá bebida até
+          o final, mas esquecida em cima da mesa, do lado do caderno. No rabisco
+          feito só para aliviar a tensão e o caos mental.
+        </p>
+
+        {
+          !compact && (
+            <>
+              <p>
+                Na lista de tarefas que vira um lembrete para manter o pé no
+                chão, mesmo com a cabeça nas alturas.
+              </p>
+
+              <p>
+                A COGU nasceu da vontade de tornar cada rotina mais leve, mais
+                bonita, mais sua.
+              </p>
+
+              <p>
+                Ao invés de te apressar, nossos produtos querem te lembrar que
+                tudo tem seu tempo. Preferimos caminhar devagar, procurando
+                cogumelos e contando borboletas no caminho.
+              </p>
+
+              <p>
+                Misturamos natureza, papel, literatura e coisinhas gostosas em
+                forma de cadernos, cerâmicas, adesivos, ecobags e o que mais
+                couber no ritual de se reconectar com a natureza e consigo.
+              </p>
+            </>
+          )
+        }
+      </div>
+
+      {
+        compact && (
+          <a href="/sobre" class="btn-secondary no-underline inline-block">
+            Conhecer mais
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>

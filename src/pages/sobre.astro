@@ -1,0 +1,52 @@
+---
+import Base from "@layouts/Base.astro";
+import Manifesto from "@components/Manifesto.astro";
+---
+
+<Base
+  title="Sobre — Cogu"
+  description="Conheça a Cogu: nascemos da vontade de tornar cada rotina mais leve, mais bonita, mais sua."
+>
+  <!-- Page header -->
+  <section class="container-cogu pt-12 md:pt-20 pb-8 text-center">
+    <p class="text-cogu-brown/70 text-sm uppercase tracking-widest font-medium mb-4">
+      Nossa história
+    </p>
+    <h1>Sobre a Cogu</h1>
+  </section>
+
+  <!-- Full manifesto -->
+  <Manifesto />
+
+  <!-- Values -->
+  <section class="container-cogu py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="space-y-3">
+          <div class="text-4xl">🍄</div>
+          <h3 class="text-lg">Feito à mão</h3>
+          <p class="text-cogu-brown/70 text-sm leading-relaxed">
+            Cada produto é criado com cuidado e atenção aos detalhes. Nenhum é
+            igual ao outro — e é isso que os torna especiais.
+          </p>
+        </div>
+        <div class="space-y-3">
+          <div class="text-4xl">🦋</div>
+          <h3 class="text-lg">Devagar e com amor</h3>
+          <p class="text-cogu-brown/70 text-sm leading-relaxed">
+            Preferimos caminhar devagar, procurando cogumelos e contando
+            borboletas no caminho. Tudo tem seu tempo.
+          </p>
+        </div>
+        <div class="space-y-3">
+          <div class="text-4xl">🌿</div>
+          <h3 class="text-lg">Natureza sempre</h3>
+          <p class="text-cogu-brown/70 text-sm leading-relaxed">
+            Misturamos natureza, papel, literatura e coisinhas gostosas no
+            ritual de se reconectar com a natureza e consigo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* MAK font family — titles */
+@font-face {
+  font-family: "MAK";
+  src: url("/fonts/Mak-RegularLow.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MAK";
+  src: url("/fonts/Mak-SemiBoldHigh.otf") format("opentype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MAK";
+  src: url("/fonts/Mak-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MAK";
+  src: url("/fonts/Mak-BlackHigh.otf") format("opentype");
+  font-weight: 900;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Soft palette */
+    --color-cream: #ffeeda;
+    --color-yellow: #f9f539;
+    --color-sage: #bec1ac;
+    --color-blue-gray: #9ab5c7;
+
+    /* Strong palette */
+    --color-brown: #633b21;
+    --color-green: #2c5f34;
+    --color-blue: #043a5f;
+    --color-red: #910d16;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cogu-cream text-cogu-brown font-sans antialiased;
+    font-feature-settings: "kern" 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-cogu-green;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  a {
+    @apply text-cogu-blue underline-offset-4 hover:underline transition-colors;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cogu-green text-cogu-cream px-6 py-3 rounded-full font-sans font-medium
+           hover:bg-cogu-brown transition-colors duration-300 inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-cogu-green text-cogu-green px-6 py-3 rounded-full font-sans font-medium
+           hover:bg-cogu-green hover:text-cogu-cream transition-colors duration-300;
+  }
+
+  .container-cogu {
+    @apply max-w-6xl mx-auto px-6;
+  }
+}
