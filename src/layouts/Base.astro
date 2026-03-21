@@ -2,6 +2,8 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import CartDrawer from "@components/react/CartDrawer";
+import { Image } from "astro:assets";
+import catImage from "@assets/details/cat.png";
 import "@/styles/global.css";
 
 interface Props {
@@ -26,7 +28,16 @@ const {
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
-    <main class="flex-1">
+    <main class="flex-1 relative overflow-hidden">
+      <!-- Decorative cats -->
+      <Image src={catImage} alt="" width={140} height={140}
+        class="absolute right-24 top-[30%] opacity-[0.18] rotate-12 pointer-events-none select-none hidden md:block z-0" />
+      <Image src={catImage} alt="" width={120} height={120}
+        class="absolute left-20 top-[55%] opacity-[0.16] -rotate-6 -scale-x-100 pointer-events-none select-none hidden md:block z-0" />
+      <Image src={catImage} alt="" width={150} height={150}
+        class="absolute right-32 top-[75%] opacity-[0.14] -rotate-12 pointer-events-none select-none hidden md:block z-0" />
+      <Image src={catImage} alt="" width={110} height={110}
+        class="absolute left-28 top-[90%] opacity-[0.17] rotate-6 -scale-x-100 pointer-events-none select-none hidden md:block z-0" />
       <slot />
     </main>
     <Footer />
