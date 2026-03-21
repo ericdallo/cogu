@@ -13,8 +13,10 @@ const { product } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/products/**/*.png"
 );
-const imagePath = `/src/assets/products/${product.images[0]}`;
-const imageModule = images[imagePath];
+
+const resolvedImages = product.images
+  .map((img) => images[`/src/assets/products/${img}`])
+  .filter(Boolean);
 ---
 
 <a
@@ -22,21 +24,24 @@ const imageModule = images[imagePath];
   class="group block no-underline hover:no-underline"
 >
   <article class="space-y-4">
-    <!-- Image -->
-    <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]">
+    <!-- Image carousel -->
+    <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]" data-carousel>
       {
-        imageModule && (
+        resolvedImages.map((mod, i) => (
           <Image
-            src={imageModule()}
+            src={mod()}
             alt={product.name}
             width={900}
             height={1200}
             quality={85}
-            class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+            class:list={[
+              "absolute inset-0 object-cover w-full h-full transition-opacity duration-1000 ease-in-out group-hover:scale-105 transition-all",
+              i === 0 ? "opacity-100" : "opacity-0",
+            ]}
+            data-slide={i}
           />
-        )
+        ))
       }
-
     </div>
 
     <!-- Info -->
@@ -56,3 +61,17 @@ const imageModule = images[imagePath];
     </div>
   </article>
 </a>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
+    const slides = carousel.querySelectorAll<HTMLElement>("[data-slide]");
+    if (slides.length <= 1) return;
+
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.replace("opacity-100", "opacity-0");
+      current = (current + 1) % slides.length;
+      slides[current].classList.replace("opacity-0", "opacity-100");
+    }, 3500);
+  });
+</script>
