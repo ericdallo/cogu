@@ -3,8 +3,7 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://ericdallo.github.io",
-  base: "/cogu",
+  site: "https://cogupaper.com",
   output: "static",
   integrations: [
     react(),
