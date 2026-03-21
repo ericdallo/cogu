@@ -23,14 +23,15 @@ const imageModule = images[imagePath];
 >
   <article class="space-y-4">
     <!-- Image -->
-    <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-square">
+    <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]">
       {
         imageModule && (
           <Image
             src={imageModule()}
             alt={product.name}
-            width={600}
-            height={600}
+            width={900}
+            height={1200}
+            quality={85}
             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
           />
         )

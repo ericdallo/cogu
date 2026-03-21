@@ -24,12 +24,13 @@ const resolvedImages = productImages
   <!-- Main image -->
   {
     resolvedImages.length > 0 && (
-      <div class="overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-square">
+      <div class="overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]">
         <Image
           src={resolvedImages[0].loader()}
           alt={productName}
-          width={800}
-          height={800}
+          width={1050}
+          height={1400}
+          quality={90}
           id="gallery-main"
           class="object-cover w-full h-full"
         />
@@ -44,7 +45,7 @@ const resolvedImages = productImages
         {resolvedImages.map((img, i) => (
           <button
             class:list={[
-              "overflow-hidden rounded-xl bg-cogu-sage/20 aspect-square border-2 transition-colors gallery-thumb",
+              "overflow-hidden rounded-xl bg-cogu-sage/20 aspect-[3/4] border-2 transition-colors gallery-thumb",
               i === 0 ? "border-cogu-green" : "border-transparent hover:border-cogu-sage",
             ]}
             data-index={i}
@@ -52,8 +53,9 @@ const resolvedImages = productImages
             <Image
               src={img.loader()}
               alt={`${productName} - foto ${i + 1}`}
-              width={200}
-              height={200}
+              width={250}
+              height={333}
+              quality={80}
               class="object-cover w-full h-full"
             />
           </button>
