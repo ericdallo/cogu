@@ -1,0 +1,6 @@
+name = "cogu-frete"
+main = "src/index.ts"
+compatibility_date = "2025-03-21"
+
+[vars]
+ALLOWED_ORIGINS = "https://cogupaper.com,http://localhost:4321"

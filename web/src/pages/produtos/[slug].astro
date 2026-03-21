@@ -2,6 +2,7 @@
 import Base from "@layouts/Base.astro";
 import ProductGallery from "@components/ProductGallery.astro";
 import ProductCard from "@components/ProductCard.astro";
+import ShippingCalculator from "@components/react/ShippingCalculator";
 import { products, getProduct, formatPrice } from "@data/products";
 import { url } from "@/utils/paths";
 import type { GetStaticPaths } from "astro";
@@ -64,27 +65,26 @@ const otherProducts = products.filter((p) => p.slug !== product.slug);
         </ul>
 
         <!-- Em breve button -->
-        <div class="space-y-3 border-t border-cogu-sage/30 pt-6">
-          <button
-            disabled
-            class="w-full bg-cogu-sage/50 text-cogu-brown/60 px-6 py-4 rounded-xl font-sans font-medium cursor-not-allowed"
-          >
-            🍄 Em breve
-          </button>
-          <p class="text-center text-cogu-brown/50 text-sm">
-            Estamos preparando tudo com carinho.<br />
-            Siga nosso
-            <a
-              href="https://instagram.com/cogupaper"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-cogu-green"
-            >
-              Instagram
-            </a>
-             para saber quando estiver disponível ♡
-          </p>
-        </div>
+                <div class="border-t border-cogu-sage/30 pt-6">
+                  <ShippingCalculator
+                    client:visible
+                    weight={product.weight}
+                    height={product.height}
+                    width={product.width}
+                    length={product.length}
+                    price={product.price}
+                  />
+                </div>
+        
+                <div class="space-y-3 border-t border-cogu-sage/30 pt-6">
+                  <button disabled class="w-full bg-cogu-sage/50 text-cogu-brown/60 px-6 py-4 rounded-xl font-sans font-medium cursor-not-allowed">
+                    🍄 Em breve
+                  </button>
+                  <p class="text-center text-cogu-brown/50 text-sm">
+                    Estamos preparando tudo com carinho.<br />
+                    Siga nosso <a href="https://instagram.com/cogupaper" target="_blank" rel="noopener noreferrer" class="text-cogu-green">Instagram</a> para saber quando estiver disponível ♡
+                  </p>
+                </div>
       </div>
     </div>
 

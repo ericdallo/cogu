@@ -10,6 +10,14 @@ export interface Product {
   images: string[]; // paths relative to src/assets/products/
   details: string[];
   category: string;
+  /** Shipping: weight in kg */
+  weight: number;
+  /** Shipping: height in cm */
+  height: number;
+  /** Shipping: width in cm */
+  width: number;
+  /** Shipping: length in cm */
+  length: number;
 }
 
 export const products: Product[] = [
@@ -40,6 +48,10 @@ a imperfeição bonita de quem as fez.`,
       "Materiais selecionados",
     ],
     category: "Papelaria",
+    weight: 0.3,
+    height: 4,
+    width: 17,
+    length: 22,
   },
   {
     slug: "stickers-set",
@@ -69,6 +81,10 @@ e tudo mais que precisar de um toque de encanto.`,
       "Inspirados na natureza",
     ],
     category: "Adesivos",
+    weight: 0.1,
+    height: 1,
+    width: 16,
+    length: 11,
   },
 ];
 
