@@ -23,7 +23,27 @@ const resolvedImages = product.images
   href={url(`/produtos/${product.slug}`)}
   class="group block no-underline hover:no-underline"
 >
-  <article class="space-y-4">
+  <article class="space-y-3">
+    <!-- Badges above image -->
+    {
+      product.badges && product.badges.length > 0 && (
+        <div class="flex flex-wrap gap-1 px-1">
+          {product.badges.slice(0, 2).map((badge, i) => (
+            <span
+              class:list={[
+                "px-2 py-0.5 text-[10px] font-sans font-medium rounded-full border",
+                i === 0
+                  ? "bg-cogu-red/10 text-cogu-red border-cogu-red/20"
+                  : "bg-cogu-brown/5 text-cogu-brown/70 border-cogu-brown/15",
+              ]}
+            >
+              {badge}
+            </span>
+          ))}
+        </div>
+      )
+    }
+
     <!-- Image carousel -->
     <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]" data-carousel>
       {

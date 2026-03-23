@@ -33,6 +33,7 @@ const otherProducts = products.filter((p) => p.slug !== product.slug);
       <ProductGallery
         productImages={product.images}
         productName={product.name}
+        badges={product.badges}
       />
 
       <!-- Product info -->
@@ -64,27 +65,51 @@ const otherProducts = products.filter((p) => p.slug !== product.slug);
           }
         </ul>
 
-        <!-- Em breve button -->
-                <div class="border-t border-cogu-sage/30 pt-6">
-                  <ShippingCalculator
-                    client:visible
-                    weight={product.weight}
-                    height={product.height}
-                    width={product.width}
-                    length={product.length}
-                    price={product.price}
-                  />
-                </div>
-        
-                <div class="space-y-3 border-t border-cogu-sage/30 pt-6">
-                  <button disabled class="w-full bg-cogu-sage/50 text-cogu-brown/60 px-6 py-4 rounded-xl font-sans font-medium cursor-not-allowed">
-                    🍄 Em breve
-                  </button>
-                  <p class="text-center text-cogu-brown/50 text-sm">
-                    Estamos preparando tudo com carinho.<br />
-                    Siga nosso <a href="https://instagram.com/cogupaper" target="_blank" rel="noopener noreferrer" class="text-cogu-green">Instagram</a> para saber quando estiver disponível ♡
-                  </p>
-                </div>
+        <!-- Shipping -->
+        <div class="border-t border-cogu-sage/30 pt-6">
+          <ShippingCalculator
+            client:visible
+            weight={product.weight}
+            height={product.height}
+            width={product.width}
+            length={product.length}
+            price={product.price}
+          />
+        </div>
+
+        <!-- Notice -->
+        {product.notice && (
+          <div class="bg-cogu-yellow/30 border border-cogu-brown/15 rounded-xl p-4 text-sm text-cogu-brown leading-relaxed">
+            <p class="font-semibold flex items-center gap-2 mb-1">
+              <span>⚠️</span> Importante
+            </p>
+            <p>{product.notice}</p>
+          </div>
+        )}
+
+        <!-- CTA -->
+        {product.ctaLink ? (
+          <div class="space-y-3 border-t border-cogu-sage/30 pt-6">
+            <a
+              href={product.ctaLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full btn-primary no-underline justify-center text-center py-4 text-lg"
+            >
+              🍄 {product.ctaText || "Comprar"}
+            </a>
+          </div>
+        ) : (
+          <div class="space-y-3 border-t border-cogu-sage/30 pt-6">
+            <button disabled class="w-full bg-cogu-sage/50 text-cogu-brown/60 px-6 py-4 rounded-xl font-sans font-medium cursor-not-allowed">
+              🍄 Em breve
+            </button>
+            <p class="text-center text-cogu-brown/50 text-sm">
+              Estamos preparando tudo com carinho.<br />
+              Siga nosso <a href="https://instagram.com/cogupaper" target="_blank" rel="noopener noreferrer" class="text-cogu-green">Instagram</a> para saber quando estiver disponível ♡
+            </p>
+          </div>
+        )}
       </div>
     </div>
 

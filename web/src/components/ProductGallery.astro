@@ -4,9 +4,10 @@ import { Image } from "astro:assets";
 interface Props {
   productImages: string[];
   productName: string;
+  badges?: string[];
 }
 
-const { productImages, productName } = Astro.props;
+const { productImages, productName, badges = [] } = Astro.props;
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/products/**/*.png"
@@ -21,6 +22,28 @@ const resolvedImages = productImages
 ---
 
 <div class="space-y-4">
+  <!-- Badges above image -->
+  {
+    badges.length > 0 && (
+      <div class="flex flex-wrap gap-1.5">
+        {badges.map((badge, i) => (
+          <span
+            class:list={[
+              "px-2.5 py-1 text-[11px] font-sans font-medium rounded-full border",
+              i === 0
+                ? "bg-cogu-red/10 text-cogu-red border-cogu-red/20"
+                : i === 1
+                  ? "bg-cogu-brown/5 text-cogu-brown/70 border-cogu-brown/15"
+                  : "bg-cogu-green/10 text-cogu-green border-cogu-green/20",
+            ]}
+          >
+            {badge}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
   <!-- Main image -->
   {
     resolvedImages.length > 0 && (
