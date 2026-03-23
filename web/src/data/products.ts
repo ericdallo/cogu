@@ -83,7 +83,7 @@ e plantinhas que encontramos quando caminhamos devagar.
 Perfeitos para decorar cadernos, fichários, garrafas, notebooks 
 e tudo mais que precisar de um toque de encanto.`,
     featured: false,
-    available: true,
+    available: false,
     images: [
       "stickers-set/product-1.png",
       "stickers-set/product-2.png",

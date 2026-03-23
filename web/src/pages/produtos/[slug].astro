@@ -20,7 +20,7 @@ if (!product) {
   return Astro.redirect(url("/produtos"));
 }
 
-const otherProducts = products.filter((p) => p.slug !== product.slug);
+const otherProducts = products.filter((p) => p.slug !== product.slug && p.available);
 ---
 
 <Base
