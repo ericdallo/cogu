@@ -109,7 +109,13 @@ export default function ShippingCalculator({
         }
 
         const data: ShippingQuote[] = await res.json();
-        const validQuotes = data.filter((q) => !q.error && parseFloat(q.price) > 0);
+        const validQuotes = data.filter(
+          (q) =>
+            !q.error &&
+            parseFloat(q.price) > 0 &&
+            !q.company.name.toLowerCase().includes("jadlog") &&
+            !q.name.toLowerCase().includes("jadlog")
+        );
 
         if (validQuotes.length === 0) {
           setErrorMsg("Nenhuma opção de frete encontrada para este CEP.");
