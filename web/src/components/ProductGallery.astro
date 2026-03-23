@@ -57,6 +57,21 @@ const resolvedImages = productImages
     )
   }
 
+  <!-- Full-res sources (hidden, used by JS) -->
+  {
+    resolvedImages.map((img, i) => (
+      <Image
+        src={img.loader()}
+        alt={`${productName} - foto ${i + 1}`}
+        width={1050}
+        height={1400}
+        quality={90}
+        class="hidden"
+        data-full-src={i}
+      />
+    ))
+  }
+
   <!-- Thumbnails -->
   {
     resolvedImages.length > 1 && (
@@ -88,15 +103,23 @@ const resolvedImages = productImages
   const thumbs = document.querySelectorAll(".gallery-thumb");
   const mainImg = document.getElementById("gallery-main") as HTMLImageElement;
   const badges = document.querySelectorAll<HTMLElement>(".gallery-badge");
+  const fullSrcImages = document.querySelectorAll<HTMLImageElement>("[data-full-src]");
+
+  // Build a map of index → full-res src
+  const fullSrcMap = new Map<number, { src: string; alt: string }>();
+  fullSrcImages.forEach((img) => {
+    const index = Number(img.getAttribute("data-full-src"));
+    fullSrcMap.set(index, { src: img.src, alt: img.alt });
+  });
 
   thumbs.forEach((thumb) => {
     thumb.addEventListener("click", () => {
-      const img = thumb.querySelector("img");
       const index = Number(thumb.getAttribute("data-index"));
+      const fullImg = fullSrcMap.get(index);
 
-      if (img && mainImg) {
-        mainImg.src = img.src;
-        mainImg.alt = img.alt;
+      if (fullImg && mainImg) {
+        mainImg.src = fullImg.src;
+        mainImg.alt = fullImg.alt;
 
         // Update thumbnail borders
         thumbs.forEach((t) => {
