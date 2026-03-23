@@ -23,27 +23,7 @@ const resolvedImages = product.images
   href={url(`/produtos/${product.slug}`)}
   class="group block no-underline hover:no-underline"
 >
-  <article class="space-y-3">
-    <!-- Badges above image -->
-    {
-      product.badges && product.badges.length > 0 && (
-        <div class="flex flex-wrap gap-1 px-1">
-          {product.badges.slice(0, 2).map((badge, i) => (
-            <span
-              class:list={[
-                "px-2 py-0.5 text-[10px] font-sans font-medium rounded-full border",
-                i === 0
-                  ? "bg-cogu-red/10 text-cogu-red border-cogu-red/20"
-                  : "bg-cogu-brown/5 text-cogu-brown/70 border-cogu-brown/15",
-              ]}
-            >
-              {badge}
-            </span>
-          ))}
-        </div>
-      )
-    }
-
+  <article class="space-y-4">
     <!-- Image carousel -->
     <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]" data-carousel>
       {
@@ -60,6 +40,28 @@ const resolvedImages = product.images
             ]}
             data-slide={i}
           />
+        ))
+      }
+
+      {/* One badge per slide, fades with its image */}
+      {
+        product.badges && product.badges.map((badge, i) => (
+          i < resolvedImages.length && (
+            <span
+              class:list={[
+                "absolute top-3 left-3 px-2.5 py-1 text-[10px] font-sans font-semibold rounded-full shadow-lg backdrop-blur-sm transition-opacity duration-1000 ease-in-out z-10",
+                i === 0 ? "opacity-100" : "opacity-0",
+                i === 0
+                  ? "bg-cogu-red/90 text-cogu-cream"
+                  : i === 1
+                    ? "bg-cogu-green/90 text-cogu-cream"
+                    : "bg-cogu-cream/95 text-cogu-brown border border-cogu-brown/15",
+              ]}
+              data-badge={i}
+            >
+              {badge}
+            </span>
+          )
         ))
       }
     </div>
@@ -85,13 +87,16 @@ const resolvedImages = product.images
 <script>
   document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
     const slides = carousel.querySelectorAll<HTMLElement>("[data-slide]");
+    const badges = carousel.querySelectorAll<HTMLElement>("[data-badge]");
     if (slides.length <= 1) return;
 
     let current = 0;
     setInterval(() => {
       slides[current].classList.replace("opacity-100", "opacity-0");
+      badges[current]?.classList.replace("opacity-100", "opacity-0");
       current = (current + 1) % slides.length;
       slides[current].classList.replace("opacity-0", "opacity-100");
+      badges[current]?.classList.replace("opacity-0", "opacity-100");
     }, 3500);
   });
 </script>

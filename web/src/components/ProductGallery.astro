@@ -22,32 +22,10 @@ const resolvedImages = productImages
 ---
 
 <div class="space-y-4">
-  <!-- Badges above image -->
-  {
-    badges.length > 0 && (
-      <div class="flex flex-wrap gap-1.5">
-        {badges.map((badge, i) => (
-          <span
-            class:list={[
-              "px-2.5 py-1 text-[11px] font-sans font-medium rounded-full border",
-              i === 0
-                ? "bg-cogu-red/10 text-cogu-red border-cogu-red/20"
-                : i === 1
-                  ? "bg-cogu-brown/5 text-cogu-brown/70 border-cogu-brown/15"
-                  : "bg-cogu-green/10 text-cogu-green border-cogu-green/20",
-            ]}
-          >
-            {badge}
-          </span>
-        ))}
-      </div>
-    )
-  }
-
   <!-- Main image -->
   {
     resolvedImages.length > 0 && (
-      <div class="overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]">
+      <div class="relative overflow-hidden rounded-2xl bg-cogu-sage/20 aspect-[3/4]">
         <Image
           src={resolvedImages[0].loader()}
           alt={productName}
@@ -57,6 +35,24 @@ const resolvedImages = productImages
           id="gallery-main"
           class="object-cover w-full h-full"
         />
+
+        {/* One badge per image, only first visible */}
+        {badges.map((badge, i) => (
+          <span
+            class:list={[
+              "gallery-badge absolute top-4 left-4 px-3 py-1.5 text-xs font-sans font-semibold rounded-full shadow-lg backdrop-blur-sm transition-opacity duration-300",
+              i === 0 ? "opacity-100" : "opacity-0 pointer-events-none",
+              i === 0
+                ? "bg-cogu-red/90 text-cogu-cream"
+                : i === 1
+                  ? "bg-cogu-green/90 text-cogu-cream"
+                  : "bg-cogu-cream/95 text-cogu-brown border border-cogu-brown/15",
+            ]}
+            data-badge-index={i}
+          >
+            {badge}
+          </span>
+        ))}
       </div>
     )
   }
@@ -91,20 +87,36 @@ const resolvedImages = productImages
 <script>
   const thumbs = document.querySelectorAll(".gallery-thumb");
   const mainImg = document.getElementById("gallery-main") as HTMLImageElement;
+  const badges = document.querySelectorAll<HTMLElement>(".gallery-badge");
 
   thumbs.forEach((thumb) => {
     thumb.addEventListener("click", () => {
       const img = thumb.querySelector("img");
+      const index = Number(thumb.getAttribute("data-index"));
+
       if (img && mainImg) {
         mainImg.src = img.src;
         mainImg.alt = img.alt;
 
+        // Update thumbnail borders
         thumbs.forEach((t) => {
           t.classList.remove("border-cogu-green");
           t.classList.add("border-transparent");
         });
         thumb.classList.remove("border-transparent");
         thumb.classList.add("border-cogu-green");
+
+        // Swap badge
+        badges.forEach((badge) => {
+          const badgeIndex = Number(badge.getAttribute("data-badge-index"));
+          if (badgeIndex === index) {
+            badge.classList.remove("opacity-0", "pointer-events-none");
+            badge.classList.add("opacity-100");
+          } else {
+            badge.classList.remove("opacity-100");
+            badge.classList.add("opacity-0", "pointer-events-none");
+          }
+        });
       }
     });
   });

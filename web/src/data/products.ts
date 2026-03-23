@@ -54,8 +54,8 @@ export const products: Product[] = [
     ],
     badges: [
       "Estoque limitado",
-      "Sem folhas inclusas",
-      "+ Folhas personalizadas",
+      "+ Arquivo de folhas personalizadas",
+      "Não acompanha folhas impressas",
     ],
     ctaText: "Reserve o seu",
     ctaLink: "https://instagram.com/cogupaper",
