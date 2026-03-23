@@ -33,7 +33,7 @@ export const products: Product[] = [
     slug: "mini-fichario",
     name: "Mini Journal",
     shortName: "Mini Journal",
-    price: 6000, // R$60
+    price: 5990, // R$59,90
     description:
       "Mini fichário A6 de couro sintético + arquivo de folhas personalizadas COGU.",
     longDescription: `O Mini Journal é perfeito para quem gosta de escrever à mão seus pensamentos, ideias, anotações, rabiscos e também para organizar a vida do jeitinho mais analógico possível. Ele vai ser sua companhia em todos os lugares.
