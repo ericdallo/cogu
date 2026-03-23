@@ -5,6 +5,9 @@ interface Env {
 
 const ME_API = "https://www.melhorenvio.com.br/api/v2/me/shipment/calculate";
 
+// Only return quotes from these carriers
+const ALLOWED_CARRIERS = ["Correios", "Jadlog", "Loggi"];
+
 function corsHeaders(origin: string): Record<string, string> {
   return {
     "Access-Control-Allow-Origin": origin,
@@ -58,7 +61,22 @@ export default {
 
       const data = await meResponse.text();
 
-      return new Response(data, {
+      // Filter quotes to only include allowed carriers
+      let filteredData = data;
+      try {
+        const quotes = JSON.parse(data);
+        if (Array.isArray(quotes)) {
+          filteredData = JSON.stringify(
+            quotes.filter((q: { company?: { name?: string } }) =>
+              ALLOWED_CARRIERS.includes(q.company?.name ?? "")
+            )
+          );
+        }
+      } catch {
+        // If parsing fails, return the raw response as-is
+      }
+
+      return new Response(filteredData, {
         status: meResponse.status,
         headers: {
           "Content-Type": "application/json",
