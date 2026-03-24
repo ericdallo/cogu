@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import brandImage from "@assets/brand.png";
 import { url } from "@/utils/paths";
 
 interface Props {
@@ -10,7 +12,7 @@ const { compact = false } = Astro.props;
 
 <section class="bg-cogu-sage/20">
   <div class="container-cogu py-16 md:py-24">
-    <div class="max-w-4xl mx-auto text-center space-y-8">
+    <div class="max-w-4xl mx-auto space-y-8">
       <div class="space-y-6 text-cogu-brown/80 text-lg leading-relaxed">
         <p>
           Oi, muito prazer, eu sou a Ju — cabecinha por trás da marca.
@@ -44,6 +46,14 @@ A COGU é só isso: um projeto pessoal, mas compartilhado, muito especial para m
 <p>
 Vamos juntos?
 </p>
+            <Image
+              src={brandImage}
+              alt="COGU brand"
+              width={250}
+              height={140}
+              quality={90}
+              class="rounded-xl mt-4"
+            />
           </>
         )}
       </div>
