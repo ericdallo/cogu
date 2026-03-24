@@ -17,13 +17,15 @@ const { compact = false } = Astro.props;
         </p>
         <p>
 A COGU nasceu de um sentimento que eu não sabia exatamente nomear: a vontade de tornar os dias comuns um pouco mais bonitos e mais habitáveis. No meio da rotina, entre coisas para resolver e pensamentos que não param, eu comecei a perceber que existiam pequenos momentos, intervalos, quase invisíveis — onde tudo ficava mais leve. E foi nesses espaços que a COGU começou a tomar forma.
-        </p>      
+        </p>
+        {!compact && (
+          <>
 <p>
 Eu nunca pensei na marca só como papelaria. Para mim, ela sempre foi mais sobre como a gente vive do que sobre o que a gente usa. Escrever, organizar, rabiscar, montar listas… tudo isso pode ser um jeito de voltar para si. Aos poucos, fui entendendo que esses gestos simples podiam ser mais do que tarefas — podiam virar pequenos rituais.
-</p>        
+</p>
 <p>
 A estética da COGU veio muito desse lugar. Eu gosto dessa mistura de natureza com cotidiano, de coisas que parecem simples, mas carregam intenção e significado. Um papel com textura, um rascunho de ilustração, um objeto na mesa que inspira criatividade e, principalmente, respiro. É quase como trazer um pouco de ar puro para dentro de casa.
-</p>        
+</p>
 <p>
 Estamos começando por aqui, mas já temos muitas ideias de produtos: cadernos, adesivos, cerâmicas, ecobags… tudo pensado para acompanhar os momentos mais silenciosos do dia. Eu gosto de imaginar que cada peça vai ali para fazer companhia, deixar o processo mais leve, mais bonito, mais seu.
 </p>
@@ -41,9 +43,9 @@ A COGU é só isso: um projeto pessoal, mas compartilhado, muito especial para m
 </p>
 <p>
 Vamos juntos?
-
-              </p>
-            </>
+</p>
+          </>
+        )}
       </div>
 
       {
