@@ -1,13 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import brandImage from "@assets/brand.png";
-import { url } from "@/utils/paths";
-
-interface Props {
-  compact?: boolean;
-}
-
-const { compact = false } = Astro.props;
 ---
 
 <section class="bg-cogu-sage/20">
@@ -15,51 +8,37 @@ const { compact = false } = Astro.props;
     <div class="max-w-4xl mx-auto space-y-8">
       <div class="space-y-6 text-cogu-brown/80 text-lg leading-relaxed">
         <p>
+Oi, muito prazer, eu sou a Ju — cabecinha por trás da marca.
+        </p>
+        <p>
 A COGU nasceu de um sentimento que eu não sabia exatamente nomear, mas que sempre esteve ali: a vontade de tornar os dias comuns mais bonitos e mais habitáveis. No meio da rotina, entre coisas para resolver e pensamentos que não param, eu comecei a perceber que existiam pequenos momentos, intervalos quase invisíveis, onde tudo ficava mais leve. E foi nesses espaços que a COGU começou a tomar forma.
         </p>
-        {!compact && (
-          <>
-<p>
-Oi, muito prazer, eu sou a Ju — cabecinha por trás da marca.
-</p>
-<p>
+        <p>
 Eu nunca pensei na marca só como papelaria. Para mim, ela sempre foi mais sobre como a gente vive do que sobre o que a gente usa. Escrever, organizar, rabiscar, montar listas… tudo isso pode ser um jeito de voltar para si. Aos poucos, fui entendendo que essas coisas podiam ser mais do que tarefas, e virar pequenos rituais.
-</p>
-<p>
+        </p>
+        <p>
 A estética da COGU veio muito desse lugar. Eu gosto dessa mistura de natureza com cotidiano, de coisas que parecem simples, mas carregam intenção e significado. Papel com textura, rascunho de ilustração, objeto na mesa que inspira criatividade e, principalmente, respiro. É quase como trazer um pouco de ar puro para dentro de casa.
-</p>
-<p>
+        </p>
+        <p>
 A COGU também não está sendo construída sozinha. Eu, Juliana (<a href="https://instagram.com/jukobel" target="_blank" rel="noopener noreferrer" class="text-cogu-green">@jukobel</a>), estou por trás de tudo isso, com suporte emocional dos meus gatos-ajudantes Banza, Taz e Nico, que estão sempre por perto pisoteando os papéis e cheirando o que chega de novo. As ilustrações ganham vida com a Maju (<a href="https://instagram.com/majulisss_" target="_blank" rel="noopener noreferrer" class="text-cogu-green">@majulisss_</a>), que topou essa parceria comigo e traz as melhores ideias para compartilhar, e nosso site foi criado pelo Eric (<a href="https://instagram.com/ericdallo" target="_blank" rel="noopener noreferrer" class="text-cogu-green">@ericdallo</a>), que torna possível que tudo isso exista também aqui para que vocês acessem.
-</p>
-<p>
+        </p>
+        <p>
 A COGU é isso: um projeto pessoal, mas compartilhado, muito especial para mim, por acabar sendo uma extensão de como eu vejo a vida. Um jeito de tornar o cotidiano um pouco mais leve, mais sensível, mais bonito de estar. Com a intenção de fazer dos pequenos momentos algo que realmente valha a pena viver.
-</p>
-<p>
+        </p>
+        <p>
 Vamos juntos?
-</p>
-            <a href="https://instagram.com/cogupaper" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 no-underline">
-              <Image
-                src={brandImage}
-                alt="COGU brand"
-                width={160}
-                height={90}
-                quality={90}
-                class="rounded-xl"
-              />
-            </a>
-          </>
-        )}
+        </p>
+        <a href="https://instagram.com/cogupaper" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 no-underline">
+          <Image
+            src={brandImage}
+            alt="COGU brand"
+            width={160}
+            height={90}
+            quality={90}
+            class="rounded-xl"
+          />
+        </a>
       </div>
-
-      {
-        compact && (
-          <div class="text-center">
-            <a href={url("/sobre")} class="btn-secondary no-underline inline-block">
-              Conhecer mais
-            </a>
-          </div>
-        )
-      }
     </div>
   </div>
 </section>

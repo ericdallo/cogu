@@ -1,9 +1,9 @@
 ---
 import Base from "@layouts/Base.astro";
 import Hero from "@components/Hero.astro";
-import Manifesto from "@components/Manifesto.astro";
 import ProductCard from "@components/ProductCard.astro";
 import { products } from "@data/products";
+import { url } from "@/utils/paths";
 ---
 
 <Base>
@@ -20,8 +20,21 @@ import { products } from "@data/products";
     </div>
   </section>
 
-  <!-- Manifesto teaser -->
-  <Manifesto compact />
+  <!-- About teaser -->
+  <section class="bg-cogu-sage/20">
+    <div class="container-cogu py-16 md:py-24">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <p class="text-cogu-brown/80 text-lg leading-relaxed text-center">
+          A COGU nasceu de um sentimento que sempre esteve ali: a vontade de tornar os dias comuns mais bonitos e mais habitáveis. No meio da rotina, entre coisas para resolver e pensamentos que não param, eu comecei a perceber que existiam pequenos momentos, intervalos quase invisíveis, onde tudo ficava mais leve. E foi nesses espaços que a marca começou a tomar forma.
+        </p>
+        <div class="text-center">
+          <a href={url("/sobre")} class="btn-secondary no-underline inline-block">
+            Conhecer mais
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Instagram CTA -->
   <section class="container-cogu py-16 md:py-24 text-center space-y-6">
