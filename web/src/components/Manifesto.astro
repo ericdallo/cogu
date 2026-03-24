@@ -15,13 +15,13 @@ const { compact = false } = Astro.props;
     <div class="max-w-4xl mx-auto space-y-8">
       <div class="space-y-6 text-cogu-brown/80 text-lg leading-relaxed">
         <p>
-          Oi, muito prazer, eu sou a Ju — cabecinha por trás da marca.
-        </p>
-        <p>
 A COGU nasceu de um sentimento que eu não sabia exatamente nomear, mas que sempre esteve ali: a vontade de tornar os dias comuns mais bonitos e mais habitáveis. No meio da rotina, entre coisas para resolver e pensamentos que não param, eu comecei a perceber que existiam pequenos momentos, intervalos quase invisíveis, onde tudo ficava mais leve. E foi nesses espaços que a COGU começou a tomar forma.
         </p>
         {!compact && (
           <>
+<p>
+Oi, muito prazer, eu sou a Ju — cabecinha por trás da marca.
+</p>
 <p>
 Eu nunca pensei na marca só como papelaria. Para mim, ela sempre foi mais sobre como a gente vive do que sobre o que a gente usa. Escrever, organizar, rabiscar, montar listas… tudo isso pode ser um jeito de voltar para si. Aos poucos, fui entendendo que essas coisas podiam ser mais do que tarefas, e virar pequenos rituais.
 </p>
@@ -53,9 +53,11 @@ Vamos juntos?
 
       {
         compact && (
-          <a href={url("/sobre")} class="btn-secondary no-underline inline-block">
-            Conhecer mais
-          </a>
+          <div class="text-center">
+            <a href={url("/sobre")} class="btn-secondary no-underline inline-block">
+              Conhecer mais
+            </a>
+          </div>
         )
       }
     </div>
