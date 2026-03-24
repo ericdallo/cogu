@@ -54,7 +54,7 @@ const resolvedImages = product.images
                 i === 0
                   ? "bg-cogu-red/90 text-cogu-cream"
                   : i === 1
-                    ? "bg-cogu-green/90 text-cogu-cream"
+                    ? "bg-cogu-brown/90 text-cogu-cream"
                     : "bg-cogu-cream/95 text-cogu-brown border border-cogu-brown/15",
               ]}
               data-badge={i}
@@ -71,13 +71,13 @@ const resolvedImages = product.images
       <p class="text-cogu-brown/50 text-xs uppercase tracking-wider">
         {product.category}
       </p>
-      <h3 class="text-cogu-green text-lg font-display group-hover:text-cogu-brown transition-colors">
+      <h3 class="text-cogu-brown text-lg font-display group-hover:text-cogu-brown/70 transition-colors">
         {product.name}
       </h3>
       <p class="text-cogu-brown/70 text-sm line-clamp-2">
         {product.description}
       </p>
-      <p class="text-cogu-green font-medium pt-1">
+      <p class="text-cogu-brown font-medium pt-1">
         {formatPrice(product.price)}
       </p>
     </div>

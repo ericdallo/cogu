@@ -45,7 +45,7 @@ const otherProducts = products.filter((p) => p.slug !== product.slug && p.availa
           <h1 class="text-3xl md:text-4xl">{product.name}</h1>
         </div>
 
-        <p class="text-cogu-green text-2xl font-display">
+        <p class="text-cogu-brown text-2xl font-display">
           {formatPrice(product.price)}
         </p>
 
@@ -58,7 +58,7 @@ const otherProducts = products.filter((p) => p.slug !== product.slug && p.availa
           {
             product.details.map((detail) => (
               <li class="flex items-center gap-3 text-cogu-brown/80 text-sm">
-                <span class="text-cogu-green">✦</span>
+                <span class="text-cogu-brown">✦</span>
                 {detail}
               </li>
             ))
@@ -106,7 +106,7 @@ const otherProducts = products.filter((p) => p.slug !== product.slug && p.availa
             </button>
             <p class="text-center text-cogu-brown/50 text-sm">
               Estamos preparando tudo com carinho.<br />
-              Siga nosso <a href="https://instagram.com/cogupaper" target="_blank" rel="noopener noreferrer" class="text-cogu-green">Instagram</a> para saber quando estiver disponível ♡
+              Siga nosso <a href="https://instagram.com/cogupaper" target="_blank" rel="noopener noreferrer" class="text-cogu-brown font-semibold">Instagram</a> para saber quando estiver disponível ♡
             </p>
           </div>
         )}
