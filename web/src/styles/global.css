@@ -29,6 +29,21 @@
   font-display: swap;
 }
 
+/* Bogart font — cogu brand title */
+@font-face {
+  font-family: "Bogart";
+  src: url("../assets/fonts/Bogart-Regular-trial.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bogart";
+  src: url("../assets/fonts/Bogart-Bold-trial.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

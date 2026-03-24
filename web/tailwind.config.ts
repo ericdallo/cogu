@@ -18,6 +18,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ['"MAK"', "Georgia", "serif"],
+        title: ['"Bogart"', "Georgia", "serif"],
         sans: ['"Montserrat"', "system-ui", "sans-serif"],
       },
     },
