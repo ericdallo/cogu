@@ -141,7 +141,7 @@ export default function ShippingCalculator({
 
   return (
     <div className="space-y-4">
-      <h3 className="text-[#2c5f34] text-base font-display flex items-center gap-2">
+      <h3 className="text-[#633b21] text-base font-display flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -170,15 +170,15 @@ export default function ShippingCalculator({
           onChange={(e) => setCep(formatCep(e.target.value))}
           className="flex-1 px-4 py-3 rounded-xl border border-[#bec1ac] bg-white/60 
                      text-[#633b21] placeholder:text-[#633b21]/40 text-sm
-                     focus:outline-none focus:ring-2 focus:ring-[#2c5f34]/30 focus:border-[#2c5f34]
+                     focus:outline-none focus:ring-2 focus:ring-[#633b21]/30 focus:border-[#633b21]
                      transition-all"
           maxLength={9}
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="px-5 py-3 rounded-xl bg-[#2c5f34] text-[#f9f5e9] text-sm font-medium
-                     hover:bg-[#633b21] transition-colors duration-300
+          className="px-5 py-3 rounded-xl bg-[#633b21] text-[#f9f5e9] text-sm font-medium
+                     hover:bg-[#633b21]/80 transition-colors duration-300
                      disabled:opacity-50 disabled:cursor-not-allowed
                      flex items-center gap-2"
         >
@@ -251,7 +251,7 @@ export default function ShippingCalculator({
                   </p>
                 </div>
               </div>
-              <span className="text-[#2c5f34] font-medium text-sm whitespace-nowrap">
+              <span className="text-[#633b21] font-medium text-sm whitespace-nowrap">
                 {formatCurrency(quote.price)}
               </span>
             </li>
